@@ -1,0 +1,21 @@
+{% extends 'base.html' %}{% load static %} {% block content %}
+<main>
+
+    <a href="{% url 'My_Blogs:blog' %}"><button>blog</button></a>
+    <a href="{% static 'images/Resume.pdf' %}"><button>My-Resume</button></a>
+    <h1>Mamadou's Portfolio </h1>
+    <div>
+        <img src="{% static 'images/me.jpg' %}">
+    </div>
+    {% for i in potfolio_items %}
+    <h3>{{i.title}}</h3>
+    <p>{{i.description}}</p>
+    <div style="width: 50px;">
+        <img src="{{ i.image.url }}">
+    </div>
+    {% if i.url%}
+    <h5><a href="{{ i.url }}">link</a></h5>
+    {% endif%} {% endfor%}
+
+</main>
+{% endblock %}

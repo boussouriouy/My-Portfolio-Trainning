@@ -1,0 +1,15 @@
+{% extends 'My_Portfolio/templates/base.html' %} {% block content %}
+<main>
+
+    <a href="{% url 'My_Portfolio:home' %}"><button>portfolio</button></a>
+    <h1>Mamadou's Blogs</h1>
+    <h3>Mamadou has written {{blogs_items.count}} blog{{ blogs_items.count|pluralize}}</h3>
+    {% for i in blogs_items%}
+    <a href="{% url 'My_Blogs:detail'  i.id %}">
+        <h2>{{i.title}}</h2>
+    </a>
+    <p>{{i.description|striptags|truncatechars:100 }}</p>
+    <span>{{i.date|date:'M d Y'|upper}}</span> {% endfor%}
+
+</main>
+{% endblock %}
